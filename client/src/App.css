@@ -111,6 +111,9 @@ button {
   padding: 7px 0;
 }
 
+button:hover{
+  background-color: green;
+}
 form.login h1,
 form.register h1 {
   text-align: center;
@@ -181,3 +184,30 @@ div.post-page a.edit-btn {
 a svg {
   height: 20px;
 }
+.ud:hover{
+  background-color: green;
+}
+/* .st {
+  height: calc(100vh - 50px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.5)),
+    url("https://images.pexels.com/photos/317355/pexels-photo-317355.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+  background-size: cover;
+  width:100%;
+}
+.tt{
+  height: calc(100vh - 50px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(rgba(255, 255, 255, 0.5),
+        rgba(255, 255, 255, 0.5)),
+      url("https://images.pexels.com/photos/317355/pexels-photo-317355.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+    background-size: cover;
+    width: 100%;
+} */

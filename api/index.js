@@ -25,7 +25,9 @@ mongoose.connect("mongodb+srv://ANUPAMSHARMA:anupamshubham321@cluster0.0r3wqns.m
    .catch(err => {
       console.error('Error connecting to MongoDB:', err);
    });
-
+app.get("/", (req, res) => {
+   res.send("<h1>Welcome to blog app server!!</h1>")
+});
 
 app.post('/register', async (req, res) => {
    const { username, password } = req.body;
@@ -79,7 +81,7 @@ app.post('/post', uploadMiddleware.single('file'), async (req, res) => {
    fs.renameSync(path, newPath);
 
    const { token } = req.cookies;
-   jwt.verify(token, "asdfe45we45w345wegw345werjktjwertkj", {}, async (err, info) => {
+   jwt.verify(token, secret, {}, async (err, info) => {
       if (err) throw err;
       const { title, summary, content } = req.body;
       const postDoc = await Post.create({
@@ -94,7 +96,38 @@ app.post('/post', uploadMiddleware.single('file'), async (req, res) => {
 
 });
 
+// app.put('/post', uploadMiddleware.single('file'), async (req, res) => {
 
+//       console.log("hello")
+//    let newPath = null;
+//    if (req.file) {
+//       const { originalname, path } = req.file;
+//       const parts = originalname.split('.');
+//       const ext = parts[parts.length - 1];
+//       newPath = path + '.' + ext;
+//       fs.renameSync(path, newPath);
+//    }
+
+//    const { token } = req.cookies;
+//    jwt.verify(token, secret, {}, async (err, info) => {
+//       if (err) throw err;
+//       const { id, title, summary, content } = req.body;
+//       const postDoc = await Post.findById(id);
+//       const isAuthor = JSON.stringify(postDoc.author) === JSON.stringify(info.id);
+//       if (!isAuthor) {
+//          return res.status(400).json('you are not the author');
+//       }
+//       await postDoc.update({
+//          title,
+//          summary,
+//          content,
+//          cover: newPath ? newPath : postDoc.cover,
+//       });
+
+//       res.json(postDoc);
+//    });
+
+// });
 const { updateOne } = require('mongoose'); // Import the necessary module for updateOne
 
 app.put('/post', uploadMiddleware.single('file'), async (req, res) => {
@@ -110,7 +143,7 @@ app.put('/post', uploadMiddleware.single('file'), async (req, res) => {
    }
 
    const { token } = req.cookies;
-   jwt.verify(token, "asdfe45we45w345wegw345werjktjwertkj", {}, async (err, info) => {
+   jwt.verify(token, secret, {}, async (err, info) => {
       if (err) throw err;
       const { id, title, summary, content } = req.body;
       const postDoc = await Post.findById(id);
@@ -141,6 +174,7 @@ app.put('/post', uploadMiddleware.single('file'), async (req, res) => {
 
 // ... Other parts of your code
 
+
 app.get('/post', async (req, res) => {
    res.json(
       await Post.find()
@@ -156,4 +190,6 @@ app.get('/post/:id', async (req, res) => {
    res.json(postDoc);
 })
 
-app.listen(4000);
+app.listen(4000,()=>{
+   console.log("server is running on 4000")
+});
