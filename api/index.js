@@ -79,7 +79,7 @@ app.post('/post', uploadMiddleware.single('file'), async (req, res) => {
    fs.renameSync(path, newPath);
 
    const { token } = req.cookies;
-   jwt.verify(token, secret, {}, async (err, info) => {
+   jwt.verify(token, "asdfe45we45w345wegw345werjktjwertkj", {}, async (err, info) => {
       if (err) throw err;
       const { title, summary, content } = req.body;
       const postDoc = await Post.create({
@@ -110,7 +110,7 @@ app.put('/post', uploadMiddleware.single('file'), async (req, res) => {
    }
 
    const { token } = req.cookies;
-   jwt.verify(token, secret, {}, async (err, info) => {
+   jwt.verify(token, "asdfe45we45w345wegw345werjktjwertkj", {}, async (err, info) => {
       if (err) throw err;
       const { id, title, summary, content } = req.body;
       const postDoc = await Post.findById(id);
