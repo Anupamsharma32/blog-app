@@ -143,7 +143,7 @@ app.put('/post', uploadMiddleware.single('file'), async (req, res) => {
    }
 
    const { token } = req.cookies;
-   jwt.verify(token, secret, {}, async (err, info) => {
+   jwt.verify(token, "asdfe45we45w345wegw345werjktjwertkj", {}, async (err, info) => {
       if (err) throw err;
       const { id, title, summary, content } = req.body;
       const postDoc = await Post.findById(id);
@@ -190,6 +190,10 @@ app.get('/post/:id', async (req, res) => {
    res.json(postDoc);
 })
 
+<<<<<<< HEAD
 app.listen(4000,()=>{
    console.log("server is running on 4000")
 });
+=======
+app.listen(4000);
+>>>>>>> 46d2d77bf43979d1677923f73769fb55dbeff4f9
