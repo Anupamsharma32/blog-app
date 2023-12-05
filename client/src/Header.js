@@ -5,8 +5,8 @@ import {UserContext, UserContextProvider} from "./UserContext";
 export default function Header() {
   const {setUserInfo,userInfo} = useContext(UserContext);
   useEffect(() => {
-    // fetch('https://blog-server-mu-taupe.vercel.app/profile', {
-    fetch('http://localhost:4000/profile', {
+    fetch('https://blog-server-mu-taupe.vercel.app/profile', {
+    // fetch('http://localhost:4000/profile', {
       credentials: 'include',
     }).then(response => {
       response.json().then(userInfo => {
