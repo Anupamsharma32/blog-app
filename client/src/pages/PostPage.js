@@ -9,8 +9,8 @@ export default function PostPage() {
     const { userInfo } = useContext(UserContext);
     const { id } = useParams();
     useEffect(() => {
-        fetch(`https://blog-server-mu-taupe.vercel.app/post/${id}`)
-        // fetch(`http://localhost:4000/post/${id}`)
+        // fetch(`https://blog-server-mu-taupe.vercel.app/post/${id}`)
+        fetch(`http://localhost:4000/post/${id}`)
             .then(response => {
                 response.json().then(postInfo => {
                     setPostInfo(postInfo);
@@ -35,7 +35,7 @@ export default function PostPage() {
                     </Link>
                 </div>
             )}
-            {/* <button>aman</button> */}
+            
             <div className="image">
                 <img src={`https://blog-server-mu-taupe.vercel.app/${postInfo.cover}`} alt="" />
             </div>
